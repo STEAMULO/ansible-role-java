@@ -8,6 +8,6 @@
 
 - name: Install Oracle Java
   tags: java
-  apt: name={{ item }} update_cache=yes state=latest
+  apt: name="{{ item }}" update_cache=yes state=latest
 #  when: item|search("^oracle")
-  with_items: java_versions
+  with_items: "{{ java_versions }}"
