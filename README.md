@@ -33,3 +33,10 @@ The valid values are:
   * openjdk-6-jre-headless (OpenJDK JRE 6 Headless)
   * openjdk-7-jre (OpenJDK JRE 7)
   * openjdk-7-jre-headless (OpenJDK JRE 7 Headless)
+
+Author Information
+------------------
+
+Steamulo - www.steamulo.com
+
+Forked from [vrischmann](https://github.com/vrischmann)
