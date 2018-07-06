@@ -1,0 +1,11 @@
+---
+- name: Add the APT repository key for Java 10
+  tags: java
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 73C3DB2A
+
+- name: Add the APT repository
+  tags:
+    - java
+  apt_repository: repo="deb http://ppa.launchpad.net/linuxuprising/java/ubuntu {{ ansible_distribution_release }} main" state=present
