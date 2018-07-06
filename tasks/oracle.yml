@@ -1,5 +1,9 @@
 ---
 - include: webupd8.yml
+  when: java_versions != "oracle-java10-installer"
+
+- include: java10.yml
+  when: java_versions == "oracle-java10-installer"
 
 - name: Automatically select the Oracle License
   tags: java
