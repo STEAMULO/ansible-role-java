@@ -15,3 +15,28 @@
   apt: name="{{ item }}" update_cache=yes state=latest
 #  when: item|search("^oracle")
   with_items: "{{ java_versions }}"
+
+- name: Java | Update Env
+  alternatives:
+    name: java
+    path: "/usr/lib/jvm/java-{{ java_default_version }}-oracle/bin/java"
+
+- name: Java | Ensure Defaults on etc/alternatives systems
+  file:
+    src: /usr/lib/jvm/java-{{ java_default_version }}-oracle
+    dest: /usr/lib/jvm/default-java
+    force: yes
+    state: link
+
+- name: Java | Export environment variables
+  template:
+    src: jdk.sh.j2
+    dest: /etc/profile.d/jdk.sh
+
+- name: Java | Source environment variables
+  shell: source /etc/profile
+  args:
+    executable: /bin/bash
+  changed_when: false
+  tags:
+    skip_ansible_lint
